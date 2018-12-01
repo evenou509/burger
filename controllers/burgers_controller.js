@@ -5,7 +5,7 @@ var router = express.Router();
 // Import the burger.js
 var burger = require("../models/burger.js");
 
-router.get('/burgers', function(req, res){
+router.get('/', function(req, res){
     burger.all(function(data){
         var hbsObject = {
             burgers: data
@@ -15,10 +15,10 @@ router.get('/burgers', function(req, res){
     });
 });
 
-router.post('/burgers/create', function(req, res){
+router.post('/create', function(req, res){
     burger.create(req.body.burger_name, function(data){
         console.log(data);
-        res.redirect('/burgers');
+        res.redirect('/');
     });
 });
 
