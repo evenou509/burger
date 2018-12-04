@@ -15,7 +15,7 @@ The demo of the burger eating application can be found: https://burger-by-jf.her
 ## Video Demo
 #### Localhost:3000
 
-![Demo](video/public/assets/img/burger-video-to-gif)
+![Demo](video./public/assets/img/burger-video-to-gif.gif)
 
 ## Concepts and Technologies
 
