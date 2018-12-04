@@ -1,37 +1,36 @@
-var express = require("express");
+const express = require('express');
+const router = express();
 
-var router = express.Router();
-
-// Import the burger.js
-var burger = require("../models/burger.js");
+// Import the model to use its database functions.
+const burger = require('../models/burger.js');
 
 router.get('/', function(req, res){
-    burger.all(function(data){
-        var hbsObject = {
-            burgers: data
-        };
-        console.log(hbsObject);
-        res.render("index", hbsObject);
-    });
+	// Get burgers from database to display on page
+	burger.all(function(data){
+		var hbsObj = {
+			burgers: data
+		};
+		res.render("index", hbsObj);
+	});
 });
 
-router.post('/create', function(req, res){
-    burger.create(req.body.burger_name, function(data){
-        console.log(data);
-        res.redirect('/');
-    });
+router.post('/', function(req, res){
+	// Create new burger then reload page via redirect
+	burger.create(req.body.burger, function(data){
+		res.redirect('/');
+	});
 });
 
 router.put('/api/burgers/:id', function(req, res){
-    burger.update(req.params.id, function(result){
-        if (result.changedRows === 0) {
-            return res.status(404).end();
-        } else {
-            res.status(200).end();
-        }
-
-    });
+	// Update burger as devoured
+	burger.update(req.params.id, function(result){
+		if (result.changedRows == 0) {
+			return res.status(404).end();
+		} else {
+			res.status(200).end();
+		}
+	});
 });
 
-// Export the router
+// export the router
 module.exports = router;
