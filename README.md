@@ -12,6 +12,11 @@ The user may enter any burger name to add it to the menu. This also adds the new
 
 The demo of the burger eating application can be found: https://burger-by-jf.herokuapp.com/
 
+## Video Demo
+#### Localhost:3000
+
+![Demo](video/public/assets/img/burger-video-to-gif)
+
 ## Concepts and Technologies
 
 * NPM => Package.Json
